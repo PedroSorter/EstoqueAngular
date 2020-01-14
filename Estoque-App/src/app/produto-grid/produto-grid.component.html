@@ -1,34 +1,36 @@
-<table>
-    <thead>
-        <tr>
-            <th>
-                Nome
-            </th>
-            <th>
-                Quantidade
-            </th>
-            <th>
-                Valor
-            </th>
-            <th>
-                Ações
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let produto of listaProdutos">
-            <td>
-                {{produto.nome}}
-            </td>
-            <td>
-                {{produto.quantidade}}
-            </td>
-            <td>
-                {{produto.valor}}
-            </td>
-            <td>
-                <button routerLink="/detalhes/{{produto.id}}" class="btn btn-secondary btn-lg">Editar</button><button routerLink="/home" class="btn btn-secondary btn-lg">Excluir<button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="produtos-grid">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    Quantidade
+                </th>
+                <th>
+                    Valor
+                </th>
+                <th>
+                    Ações
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let produto of listaProdutos">
+                <td>
+                    {{produto.nome}}
+                </td>
+                <td>
+                    {{produto.quantidade}}
+                </td>
+                <td>
+                    {{produto.valor}}
+                </td>
+                <td>
+                    <button routerLink="/detalhes/{{produto.id}}" class="btn btn-primary btn-lg">Editar</button><button (click)="Deletar(produto)" class="btn btn-danger btn-lg">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

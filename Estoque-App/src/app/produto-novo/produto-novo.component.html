@@ -5,15 +5,15 @@
           <div itemscope itemtype="https://schema.org/Movie" class="produto-detalhe">
             <img alt="Capa" class="produto-detalhe-imagem" itemprop="image" src="/assets/imgs/produto-teste.jfif">
             <div class="produto-detalhe-info">
-              <form [formGroup]="produtoForm" (ngSubmit)="EditarProduto()">
+              <form [formGroup]="produtoForm" (ngSubmit)="SalvarProduto()">
                 <div class="produto-detalhe-info">
-                  <h1>Nome:</h1><input itemprop="name" class="produto-detalhe-info-dados" formControlName="Nome" value="{{produto?.Nome}}"> 
+                  <h1>Nome:</h1><input itemprop="name" class="produto-detalhe-info-dados" formControlName="Nome" value=""> 
                 </div>
                 <div class="produto-detalhe-info">
-                  <h2>Quantidade</h2><input itemprop="quantity" class="produto-detalhe-info-dados" formControlName="Quantidade" value="{{produto?.Quantidade}}"> 
+                  <h2>Quantidade</h2><input itemprop="quantity" class="produto-detalhe-info-dados" formControlName="Quantidade" value=""> 
                 </div>
                 <div class="produto-detalhe-info">
-                  <h2>Preço:</h2><input itemprop="price" class="produto-detalhe-info-dados" formControlName="Valor" value="{{produto?.Valor}}"> 
+                  <h2>Preço:</h2><input itemprop="price" class="produto-detalhe-info-dados" formControlName="Valor" value=""> 
                 </div>
                 <div class="produto-acoes">
                   <button type="submit" class="btn btn-primary btn-lg produto-detalhe-voltar">Salvar</button>       

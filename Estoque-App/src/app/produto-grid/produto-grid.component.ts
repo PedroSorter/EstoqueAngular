@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { WebserviceService } from 'src/app/services/webservice.service';
+import { Produto } from '../Models/produto';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+export interface DialogData {
+  id: string;
+  nome: string;
+}
 
 @Component({
   selector: 'app-produto-grid',
@@ -8,15 +15,49 @@ import { WebserviceService } from 'src/app/services/webservice.service';
 })
 export class ProdutoGridComponent implements OnInit {
 
-  listaProdutos;
+  listaProdutos = new Array<Produto>();
 
-  constructor(private http: WebserviceService)
+  constructor(private http: WebserviceService, private dialog: MatDialog)
    {
-      this.http.GetProdutos().subscribe((data: any) => {
-        this.listaProdutos = data;
-      })
+      this.CarregarProdutos();
+   }
+
+   Deletar(produto): void {
+    const dialogRef = this.dialog.open(DeletarProdutoDialog, {
+      width: '250px',
+      data: {id: produto.id, nome: produto.nome}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+        this.CarregarProdutos();
+    });
+  }
+
+   CarregarProdutos(){
+    this.http.GetProdutos().subscribe((data: any) => {
+      this.listaProdutos = data.map((produto) => produto);
+    })
    }
 
   ngOnInit() {
+  }
+}
+
+@Component({
+  selector: 'produto-grid-dialog',
+  templateUrl: 'produto-grid-dialog.html',
+})
+export class DeletarProdutoDialog {
+  constructor(
+    public dialogRef: MatDialogRef<DeletarProdutoDialog>, @Inject(MAT_DIALOG_DATA) public data: DialogData, private http: WebserviceService) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  DeletarProduto(id) {
+    this.http.DeleteProduto(id).subscribe((data: any) => {
+      this.dialogRef.close();
+    })
   }
 }

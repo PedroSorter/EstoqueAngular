@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Deletar</h1>
+<div mat-dialog-content>
+  <p>Deseja mesmo deletar o produto: {{data.nome}}? </p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Não</button>
+  <button mat-button (click)="DeletarProduto(data.id)" cdkFocusInitial>Sim</button>
+</div>
