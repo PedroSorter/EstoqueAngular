@@ -1,0 +1,37 @@
+.produto {
+    position: relative;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    display: flex; 
+    justify-content: center;
+    margin-top: 100px;
+}
+.produto-detalhe {
+    display: inline-flex;
+  }
+
+  .produto-detalhe-info{
+    color: white;
+  }
+
+  .produto-detalhe-info-nome {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .produto-detalhe-info-descricao {
+    padding: 10px;
+    text-align: center;
+  }
+  .produto-detalhe-voltar {
+    position: relative;
+    margin: auto;
+    width: 50%;
+    display: flex; 
+    justify-content: center;
+  }
+
+  .produto-detalhe-imagem {
+      min-width: 350px;
+   }

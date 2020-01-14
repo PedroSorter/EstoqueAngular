@@ -6,9 +6,12 @@ import { AppComponent } from './app.component';
 import { ProdutoGridComponent } from './produto-grid/produto-grid.component';
 import { ProdutoComponent } from './produto/produto.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProdutoSearchComponent } from './produto-search/produto-search.component';
+import { ProdutoDetalheComponent } from './produto-detalhe/produto-detalhe.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: ProdutoComponent },
+  { path: 'detalhes/:id', component: ProdutoDetalheComponent},
   { path: '',   redirectTo: '/home', pathMatch: 'full' }
 ];
 
@@ -16,7 +19,9 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     ProdutoGridComponent,
-    ProdutoComponent
+    ProdutoComponent,
+    ProdutoSearchComponent,
+    ProdutoDetalheComponent
   ],
   imports: [
     BrowserModule,

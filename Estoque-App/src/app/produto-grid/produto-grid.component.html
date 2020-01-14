@@ -10,6 +10,9 @@
             <th>
                 Valor
             </th>
+            <th>
+                Ações
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +25,9 @@
             </td>
             <td>
                 {{produto.valor}}
+            </td>
+            <td>
+                <button routerLink="/detalhes/{{produto.id}}" class="btn btn-secondary btn-lg">Editar</button><button routerLink="/home" class="btn btn-secondary btn-lg">Excluir<button>
             </td>
         </tr>
     </tbody>

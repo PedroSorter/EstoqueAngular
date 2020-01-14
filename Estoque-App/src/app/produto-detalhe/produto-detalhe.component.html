@@ -1,0 +1,17 @@
+<main class="produto">
+    <section>
+      <div class="col-md-12">
+        <div class="row">
+          <div itemscope itemtype="https://schema.org/Movie" class="produto-detalhe">
+            <img alt="Capa" class="produto-detalhe-imagem" itemprop="image" src="">
+            <div class="produto-detalhe-info">
+              <h1 itemprop="name" class="produto-detalhe-info-nome">{{detalheProduto?.Nome}}</h1>
+              <p itemprop="description" class="produto-detalhe-info-descricao">{{detalheProduto?.Quantidade}}</p>
+              <p itemprop="description" class="produto-detalhe-info-descricao">{{detalheProduto?.Valor}}</p>
+              <button routerLink="/home" class="btn btn-secondary btn-lg produto-detalhe-voltar">Voltar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</main>
