@@ -25,7 +25,7 @@ export class ProdutoGridComponent implements OnInit {
    Deletar(produto): void {
     const dialogRef = this.dialog.open(DeletarProdutoDialog, {
       width: '250px',
-      data: {id: produto.id, nome: produto.nome}
+      data: {id: produto.Id, nome: produto.Nome}
     });
 
     dialogRef.afterClosed().subscribe(result => {
