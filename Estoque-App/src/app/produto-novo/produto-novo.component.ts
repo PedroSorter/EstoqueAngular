@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms'
 import { WebserviceService } from '../services/webservice.service';
 import { Produto } from '../Models/produto';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-produto-novo',
@@ -11,7 +12,6 @@ import { Produto } from '../Models/produto';
 export class ProdutoNovoComponent implements OnInit {
 
   produtoForm = new FormGroup({
-    Id: new FormControl(''),
     Nome: new FormControl(''),
     Quantidade: new FormControl(''),
     Valor: new FormControl('')
@@ -19,16 +19,17 @@ export class ProdutoNovoComponent implements OnInit {
 
   produto: Produto;
 
-  constructor(private http: WebserviceService) { }
+  constructor(private http: WebserviceService, private router: Router) { }
 
   ngOnInit() {
   }
 
   SalvarProduto() {
     this.produto = this.produtoForm.value;
-    this.produto.Id = 'b7a5374b-9d41-5cf5-b778-73ed6ee12596';
-    this.http.CriarProduto(this.produto).subscribe((data: any) => {
-
+    this.http.PostProduto(this.produto).subscribe((data: any) => {
+      if(data.status == 200){
+        this.router.navigate(["home"])
+      }
     })
   }
 }

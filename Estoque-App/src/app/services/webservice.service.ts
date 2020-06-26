@@ -12,35 +12,37 @@ export class WebserviceService {
   constructor(private http: HttpClient) {} 
 
    public GetProdutos() {
-      let urlinit = `${url}/GetProdutos`;  
+      let urlinit = `${url}/Produtos`;  
       return this.http.get<Produto>(urlinit);
     }
  
     public GetProdutoId(id) {
-      let urlinit = `${url}/GetProduto/${id}`;
+      let urlinit = `${url}/Produto/${id}`;
       return this.http.get<Produto>(urlinit);
     }
 
     public PutProduto(produto) {
-        let urlinit = `${url}/EditarProduto/`;
+        let urlinit = `${url}/Produto/`;
         return this.http.put(`${urlinit}`,produto ,{ 
           headers: new HttpHeaders({
           'Content-Type': 'application/json'
-        })
+        }),
+        observe: 'response' 
       })
     }
 
     public DeleteProduto(id){
-      let urlinit = `${url}/DeletarProduto/${id}`;
-      return this.http.delete(`${urlinit}`)
+      let urlinit = `${url}/Produto/${id}`;
+      return this.http.delete(`${urlinit}`, { observe: 'response' })
     }
 
-    public CriarProduto(produto) {
-      let urlinit = `${url}/PostProduto/`;
-      return this.http.post(`${urlinit}`,produto ,{
+    public PostProduto(produto) {
+      let urlinit = `${url}/Produto/`;
+     return this.http.post(`${urlinit}`,produto ,{
         headers: new HttpHeaders({
           'Content-Type': 'application/json'
-        })
+        }),
+        observe: 'response' 
       })
     }
 }

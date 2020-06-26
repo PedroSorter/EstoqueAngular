@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WebserviceService } from '../services/webservice.service';
 import { Produto } from '../Models/produto';
-import { FormControl, FormGroup } from '@angular/forms'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-produto-detalhe',
@@ -11,16 +11,9 @@ import { FormControl, FormGroup } from '@angular/forms'
 })
 export class ProdutoDetalheComponent implements OnInit {
   id;
-  produtoForm = new FormGroup({
-    Id: new FormControl(''),
-    Nome: new FormControl(''),
-    Quantidade: new FormControl(''),
-    Valor: new FormControl('')
-  });
-  
   produto = new Produto;
 
-  constructor(private route: ActivatedRoute, private http: WebserviceService)
+  constructor(private route: ActivatedRoute, private http: WebserviceService, private router: Router)
   {
     this.route.params.subscribe(res => {
       this.id = res.id;
@@ -29,20 +22,15 @@ export class ProdutoDetalheComponent implements OnInit {
 
   ngOnInit() {
     this.http.GetProdutoId(this.id).subscribe((data: any) => {
-      this.produto = data;
-      this.produtoForm.patchValue({
-        Id: data.id,
-        Nome: data.nome,
-        Quantidade: data.quantidade,
-        Valor: data.valor
-      });
+      this.produto = data;     
     });
   }
 
   EditarProduto() {
-    this.produto = this.produtoForm.value;
     this.http.PutProduto(this.produto).subscribe((data: any) => {
-
+      if(data.status == 200){
+        this.router.navigate(["home"])
+      }
     })
   }
 }

@@ -19,16 +19,16 @@
         <tbody>
             <tr *ngFor="let produto of listaProdutos">
                 <td>
-                    {{produto.nome}}
+                    {{produto?.Nome}}
                 </td>
                 <td>
-                    {{produto.quantidade}}
+                    {{produto?.Quantidade}}
                 </td>
                 <td>
-                    {{produto.valor}}
+                    {{produto?.Valor}}
                 </td>
                 <td>
-                    <button routerLink="/detalhes/{{produto.id}}" class="btn btn-primary btn-lg">Editar</button><button (click)="Deletar(produto)" class="btn btn-danger btn-lg">Excluir</button>
+                    <button routerLink="/detalhes/{{produto?.Id}}" class="btn btn-primary btn-lg">Editar</button><button (click)="Deletar(produto)" class="btn btn-danger btn-lg">Excluir</button>
                 </td>
             </tr>
         </tbody>
